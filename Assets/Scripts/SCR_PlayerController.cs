@@ -4,60 +4,62 @@ using UnityEngine;
 
 public class SCR_PlayerController : MonoBehaviour
 {
+
     CharacterController controller;
-    [SerializeField] float movementDistance= 10f;
-    [SerializeField] float movementInterval = 0.5f;
-    [SerializeField] float jumpHeight;
     Vector3 move;
+    [SerializeField] float movementSpeed;
+    //[Header("TranslateSystem")]
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
+    //[SerializeField] Vector3 origin, targetPos;
+    //[SerializeField] float movementDistance = 10f;
+    //[SerializeField] bool isMoving;
 
-    Vector3 velocity;
-    public bool isGrounded;
-
-    public float airTime = 0.1f;
-
-    public float gravity = -10f;
-
-    private void Start()
+    public void Start()
     {
         controller = GetComponent<CharacterController>();
     }
+
     private void Update()
     {
         CryptMovement();
 
     }
 
+
+
     void CryptMovement()
     {
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * movementDistance * Time.deltaTime);
+        controller.Move(move * movementSpeed * Time.deltaTime);
     }
 
-    void CryptJump()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    //public IEnumerator MovePlayer(Vector3 dir)
+    //{
+    //    isMoving = true;
 
-        if (isGrounded && velocity.y <= 0)
-        {
-            airTime = 0.1f;
-            velocity.y = -2f;
+    //    origin = transform.position;
 
-        }
+    //    targetPos = origin + dir;
 
-        if (!isGrounded) airTime -= Time.deltaTime;
+    //    for (float i = 0f; i < movementDistance; i += Time.deltaTime)
+    //    {
+    //        transform.position = Vector3.MoveTowards(origin, targetPos, i);
+    //        yield return null;
+    //    }
 
 
-        if (airTime <= 0f) velocity.y += gravity * Time.deltaTime;
+    //    movementState = MovementStates.NOTHING;
 
-        controller.Move(velocity * Time.deltaTime);
-    }
+    //    isMoving = false;
+
+
+    //}
+
+
 
 }
