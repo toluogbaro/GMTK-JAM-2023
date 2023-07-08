@@ -4,15 +4,40 @@ using UnityEngine;
 
 public class SCR_Shoot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject bullet;
+    public float bpmInterval, counter;
+    public float destroyTime;
+    public float bulletSpeed;
+
+    
+
+    private void Update()
     {
-        
+        counter += Time.deltaTime;
+
+        if (counter >= bpmInterval)
+        {
+            StartCoroutine(Shoot());
+            counter = 0f;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Shoot()
     {
-        
+        GameObject _bullet = Instantiate(bullet, transform);
+
+        _bullet.transform.position = transform.position;
+
+        Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+
+        rb.AddForce(_bullet.transform.forward * bulletSpeed);
+
+        yield return new WaitForSeconds(bpmInterval);
+
+        Destroy(_bullet);
+
+        yield return null;
+
+
     }
 }
