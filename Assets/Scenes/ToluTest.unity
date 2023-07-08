@@ -1975,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1959313965
 Transform:
   m_ObjectHideFlags: 0
@@ -2003,6 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c7a99be074da84f92839374e332bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGun: {fileID: 11400000, guid: 7ccff13ea213d8340b77fede73cea02d, type: 2}
   bullet: {fileID: 5422886911715100557, guid: e6ab4d63776bcca4a87f84a83ea021f4, type: 3}
   player: {fileID: 1281760797}
   bpmInterval: 0.5
