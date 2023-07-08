@@ -332,6 +332,8 @@ GameObject:
   - component: {fileID: 690671251}
   - component: {fileID: 690671250}
   - component: {fileID: 690671249}
+  - component: {fileID: 690671253}
+  - component: {fileID: 690671252}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -388,6 +390,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &690671252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690671248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26f1ce1614a94c4da881132f1fba23d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &690671253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690671248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f006ef3e9ffacc4fb8a83e5014409e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &758160614
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984828860}
   - component: {fileID: 984828859}
-  - component: {fileID: 984828858}
+  - component: {fileID: 984828861}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -611,14 +637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &984828858
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984828857}
-  m_Enabled: 1
 --- !u!20 &984828859
 Camera:
   m_ObjectHideFlags: 0
@@ -677,6 +695,19 @@ Transform:
   m_Father: {fileID: 1281760797}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+--- !u!114 &984828861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984828857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1016106402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,7 +2003,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGun: {fileID: 11400000, guid: 7ccff13ea213d8340b77fede73cea02d, type: 2}
-  bullet: {fileID: 5422886911715100557, guid: e6ab4d63776bcca4a87f84a83ea021f4, type: 3}
   player: {fileID: 1281760797}
   bpmInterval: 0.5
   counter: 0
