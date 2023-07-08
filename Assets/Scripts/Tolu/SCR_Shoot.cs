@@ -35,20 +35,24 @@ public class SCR_Shoot : MonoBehaviour
         {
             for (int i = 0; i < currentGun.Bullets.Length; i++)
             {
-                magazine.Add(BulletPool.SharedInstance.GetPooledObject());
+                GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+                if (_bullet != null)
+                {
+                    //_bullet.transform.position = transform.position;
+                    //_bullet.transform.rotation = player.rotation;
+                    //_bullet.transform.Rotate(0, currentGun.Bullets[i], 0);
+                    _bullet.SetActive(true);
+                }
+                magazine.Add(_bullet);
+
 
             }
         }
 
-        //foreach (GameObject go in magazine)
-        //{
-        //    go.SetActive(false);
-        //}
-
         for (int j = 0; j < magazine.Count; j++)
         {
+
             magazine[j].SetActive(false);
-            Debug.Log(j +"st angle is " + currentGun.Bullets[j]);
             StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
         }
     }
@@ -67,13 +71,11 @@ public class SCR_Shoot : MonoBehaviour
 
     public IEnumerator Shoot(GameObject _bullet, float rotation, int shot)
     {
-        if (_bullet != null)
+        if (!_bullet.activeSelf)
         {
-            Debug.Log("Current rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
             _bullet.transform.position = transform.position;
             _bullet.transform.rotation = player.rotation;
             _bullet.transform.Rotate(0, rotation, 0);
-            Debug.Log("New rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
             _bullet.SetActive(true);
         }
 
@@ -84,7 +86,6 @@ public class SCR_Shoot : MonoBehaviour
         rb.AddForce(_bullet.transform.forward * bulletSpeed);
 
         _bullet.transform.parent = null;
-
 
         yield return null;
 
