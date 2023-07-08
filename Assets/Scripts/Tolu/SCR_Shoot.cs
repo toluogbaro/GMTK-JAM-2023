@@ -6,91 +6,87 @@ using UnityEngine;
 public class SCR_Shoot : MonoBehaviour
 {
     public GunConfiguration currentGun;
-
-    public GameObject bullet;
     public Transform player;
     public float bpmInterval, counter;
     public float destroyTime;
     public float bulletSpeed;
 
-    private void Update()
-    {
-        counter += Time.deltaTime;
+    private List<GameObject> magazine;
 
-        if (counter >= bpmInterval)
+    private void Start()
+    {
+        magazine = new List<GameObject>();
+    }
+
+    private void OnEnable()
+    {
+        SCR_BeatSystem.OnMarkerUpdate += HandleMarkerUpdate;
+        SCR_BeatSystem.OnBeatUpdate += HandleBeatUpdate;
+    }
+    private void OnDisable()
+    {
+        SCR_BeatSystem.OnMarkerUpdate -= HandleMarkerUpdate;
+        SCR_BeatSystem.OnBeatUpdate -= HandleBeatUpdate;
+    }
+
+    private void HandleMarkerUpdate(string updatedString)
+    {
+        if (magazine.Count != currentGun.Bullets.Length)
         {
-            StartCoroutine(Shoot());
-            counter = 0f;
+            for (int i = 0; i < currentGun.Bullets.Length; i++)
+            {
+                magazine.Add(BulletPool.SharedInstance.GetPooledObject());
+
+            }
+        }
+
+        //foreach (GameObject go in magazine)
+        //{
+        //    go.SetActive(false);
+        //}
+
+        for (int j = 0; j < magazine.Count; j++)
+        {
+            magazine[j].SetActive(false);
+            Debug.Log(j +"st angle is " + currentGun.Bullets[j]);
+            StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
         }
     }
 
-    public IEnumerator Shoot()
+    private void HandleBeatUpdate(int updatedString)
     {
-        int numberOfShots = currentGun.Bullets.Length;
+    }
 
-        foreach (float shot in currentGun.Bullets)
+    private void LoadBullets(int magazineCap)
+    {
+        for (int i = 0; i < currentGun.Bullets.Length; i++)
         {
-            GameObject _bullet = Instantiate(bullet, transform);
-
-            _bullet.transform.position = transform.position;
-
-            _bullet.transform.rotation = player.rotation;
-
-            //GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
-            //if (bullet != null)
-            //{
-            //    bullet.transform.position = transform.position;
-            //    bullet.transform.rotation = player.rotation;
-            //    bullet.SetActive(true);
-            //}
-
-            Rigidbody rb = _bullet.GetComponent<Rigidbody>();
-
-            rb.AddForce(_bullet.transform.forward * bulletSpeed);
-
-            _bullet.transform.parent = null;
-
-            yield return new WaitForSeconds(bpmInterval);
-
-            Destroy(_bullet);
-            //bullet.SetActive(false);
+            magazine[i] = BulletPool.SharedInstance.GetPooledObject();
         }
+    }
+
+    public IEnumerator Shoot(GameObject _bullet, float rotation, int shot)
+    {
+        if (_bullet != null)
+        {
+            Debug.Log("Current rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
+            _bullet.transform.position = transform.position;
+            _bullet.transform.rotation = player.rotation;
+            _bullet.transform.Rotate(0, rotation, 0);
+            Debug.Log("New rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
+            _bullet.SetActive(true);
+        }
+
+        Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+
+        rb.velocity = Vector3.zero;
+
+        rb.AddForce(_bullet.transform.forward * bulletSpeed);
+
+        _bullet.transform.parent = null;
 
 
         yield return null;
 
-
     }
 }
-
-
-//private IEnumerator ShootSpread()
-//{
-//    IsShooting = true;
-
-//    float angleIncrement = degree / (bulletAmount - 1);
-//    Quaternion startRotation = firePoint.rotation;
-
-//    for (int i = 0; i < bulletAmount; i++)
-//    {
-//        Quaternion spreadRotation = Quaternion.AngleAxis(-degree / 2 + (i * angleIncrement), Vector3.forward);
-//        Quaternion bulletRotation = startRotation * spreadRotation;
-
-//        GameObject projectileObject = Instantiate(projectilePrefab, firePoint.position, bulletRotation);
-
-//        if (projectileObject.TryGetComponent(out ProjectileMovement projectile))
-//        {
-//            Vector3 initialDirection = (Player.position - firePoint.position).normalized;
-//            Vector3 spreadDirection = spreadRotation * initialDirection;
-//            projectile.SetVelocity(spreadDirection, bulletSpeed);
-//            projectile.SetRange(BulletRange);
-//            projectile.SetDamage(damage);
-//            projectile.SetEnemyBullet();
-//            projectile.SetBulletScale(bulletScale);
-//        }
-//    }
-
-//    yield return new WaitForSeconds(RestTime);
-
-//    IsShooting = false;
-//}
