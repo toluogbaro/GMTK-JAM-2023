@@ -7,7 +7,6 @@ public class BulletPool : MonoBehaviour
     public static BulletPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
-    public Transform poolParent;
     public int amountToPool;
 
     void Awake()
@@ -21,8 +20,7 @@ public class BulletPool : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool);
-            tmp.transform.parent = poolParent;
+            tmp = Instantiate(objectToPool, transform);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }

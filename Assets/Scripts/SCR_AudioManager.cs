@@ -27,7 +27,7 @@ class SCR_AudioManager : MonoBehaviour
             bS.StopAndClear(instance);
         }
 
-        Debug.Log(SCR_BeatSystem.marker);
+        //Debug.Log(SCR_BeatSystem.marker);
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
