@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SCR_Shoot : MonoBehaviour
 {
-    public static GunConfiguration currentGun;
+    public GunConfiguration currentGun;
 
     public GameObject bullet;
     public Transform player;
