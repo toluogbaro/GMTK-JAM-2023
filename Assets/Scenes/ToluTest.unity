@@ -390,45 +390,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984828857}
-  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 0.39, y: 6.72, z: -3.45}
-  m_LocalScale: {x: 1, y: 1, z: 0.5600672}
+  m_LocalRotation: {x: 0.60876137, y: -0, z: -0, w: 0.7933534}
+  m_LocalPosition: {x: -12.9, y: 17.218561, z: -18.02}
+  m_LocalScale: {x: 1, y: 1.0526185, z: 0.97052974}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1281760797}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
---- !u!1 &1067261423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1067261424}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1067261424
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067261423}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1281760797}
+  m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!1 &1281760793
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +412,7 @@ GameObject:
   - component: {fileID: 1281760794}
   - component: {fileID: 1281760798}
   - component: {fileID: 1281760799}
+  - component: {fileID: 1281760800}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -525,11 +495,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1.7855, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 984828860}
   - {fileID: 1959313965}
-  - {fileID: 1067261424}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1281760798
 MonoBehaviour:
@@ -562,6 +530,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1281760800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281760793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b482084f2027b4388ca289f938dea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 5422886911715100557, guid: e6ab4d63776bcca4a87f84a83ea021f4, type: 3}
+  amountToPool: 20
 --- !u!1 &1343296166
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +640,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1452036251
 GameObject:
@@ -754,7 +737,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1882712524
 GameObject:
@@ -851,7 +834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1959313964
 GameObject:
@@ -878,12 +861,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959313964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.11761414, z: 0.05000019}
-  m_LocalScale: {x: 0.26638, y: 0.14919074, z: 0.26638}
+  m_LocalPosition: {x: 0.029999733, y: 0.11761414, z: 0.05000019}
+  m_LocalScale: {x: 0.26638, y: 0.14919075, z: 0.26638}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1281760797}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1959313966
 MonoBehaviour:
@@ -897,7 +880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c7a99be074da84f92839374e332bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 5422886911715100557, guid: e6ab4d63776bcca4a87f84a83ea021f4, type: 3}
+  currentGun: {fileID: 11400000, guid: 7ccff13ea213d8340b77fede73cea02d, type: 2}
+  player: {fileID: 1281760797}
   bpmInterval: 0.5
   counter: 0
   destroyTime: 2

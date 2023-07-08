@@ -13,8 +13,6 @@ public class SCR_Shoot : MonoBehaviour
     public float destroyTime;
     public float bulletSpeed;
 
-    
-
     private void Update()
     {
         counter += Time.deltaTime;
@@ -37,17 +35,25 @@ public class SCR_Shoot : MonoBehaviour
             _bullet.transform.position = transform.position;
 
             _bullet.transform.rotation = player.rotation;
-            bullet.transform.Rotate(0, shot, 0);
 
-            Debug.Log(shot + "'s transform forward is " + bullet.transform.forward);
+            //GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
+            //if (bullet != null)
+            //{
+            //    bullet.transform.position = transform.position;
+            //    bullet.transform.rotation = player.rotation;
+            //    bullet.SetActive(true);
+            //}
 
             Rigidbody rb = _bullet.GetComponent<Rigidbody>();
 
             rb.AddForce(_bullet.transform.forward * bulletSpeed);
 
+            _bullet.transform.parent = null;
+
             yield return new WaitForSeconds(bpmInterval);
 
             Destroy(_bullet);
+            //bullet.SetActive(false);
         }
 
 
