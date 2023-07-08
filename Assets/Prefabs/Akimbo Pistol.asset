@@ -16,3 +16,4 @@ MonoBehaviour:
   Bullets:
   - 0
   - 180
+  audioParam: Burst

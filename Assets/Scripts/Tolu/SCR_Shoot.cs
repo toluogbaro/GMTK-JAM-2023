@@ -11,11 +11,14 @@ public class SCR_Shoot : MonoBehaviour
     public float destroyTime;
     public float bulletSpeed;
 
+    SCR_AudioManager audioManager;
+
     private List<GameObject> magazine;
 
     private void Start()
     {
         magazine = new List<GameObject>();
+        audioManager = FindObjectOfType<SCR_AudioManager>();
     }
 
     private void OnEnable()
@@ -50,6 +53,7 @@ public class SCR_Shoot : MonoBehaviour
             magazine[j].SetActive(false);
             Debug.Log(j +"st angle is " + currentGun.Bullets[j]);
             StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
+            audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
         }
     }
 
