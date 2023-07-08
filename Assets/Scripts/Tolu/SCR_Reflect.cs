@@ -12,9 +12,24 @@ public class SCR_Reflect : MonoBehaviour
     private int reflects = 0;
     //[SerializeField] private int maxReflects;
 
+    [SerializeField] SCR_Reflective_Surface[] reflectiveWalls;
+    [SerializeField] float distanceThreshold;
+    [SerializeField] Collider _collider;
+
+    private void Awake()
+    {
+        reflectiveWalls = FindObjectsOfType<SCR_Reflective_Surface>();
+        _collider = GetComponent<Collider>();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        DistanceToWallCheck();
     }
 
     private void LateUpdate()
@@ -33,5 +48,21 @@ public class SCR_Reflect : MonoBehaviour
 
         //reflects++;
 
+    }
+
+    void DistanceToWallCheck()
+    {
+        for(int i = 0; i < reflectiveWalls.Length; i++ )
+        {
+            float dist = Vector3.Distance(transform.position, reflectiveWalls[i].transform.position);
+            if(dist <= distanceThreshold)
+            {
+                _collider.isTrigger = false;
+            }
+            else
+            {
+                _collider.isTrigger = true;
+            }
+        }
     }
 }
