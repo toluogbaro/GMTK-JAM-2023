@@ -1,43 +1,96 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SCR_Shoot : MonoBehaviour
 {
-    public GameObject bullet;
+    public GunConfiguration currentGun;
+    public Transform player;
     public float bpmInterval, counter;
     public float destroyTime;
     public float bulletSpeed;
 
-    
+    SCR_AudioManager audioManager;
 
-    private void Update()
+    private List<GameObject> magazine;
+
+    private void Start()
     {
-        counter += Time.deltaTime;
+        magazine = new List<GameObject>();
+        audioManager = FindObjectOfType<SCR_AudioManager>();
+    }
 
-        if (counter >= bpmInterval)
+    private void OnEnable()
+    {
+        SCR_BeatSystem.OnMarkerUpdate += HandleMarkerUpdate;
+        SCR_BeatSystem.OnBeatUpdate += HandleBeatUpdate;
+    }
+    private void OnDisable()
+    {
+        SCR_BeatSystem.OnMarkerUpdate -= HandleMarkerUpdate;
+        SCR_BeatSystem.OnBeatUpdate -= HandleBeatUpdate;
+    }
+
+    private void HandleMarkerUpdate(string updatedString)
+    {
+        if (magazine.Count != currentGun.Bullets.Length)
         {
-            StartCoroutine(Shoot());
-            counter = 0f;
+            for (int i = 0; i < currentGun.Bullets.Length; i++)
+            {
+                magazine.Add(BulletPool.SharedInstance.GetPooledObject());
+
+            }
+        }
+
+        //foreach (GameObject go in magazine)
+        //{
+        //    go.SetActive(false);
+        //}
+
+        for (int j = 0; j < magazine.Count; j++)
+        {
+            magazine[j].SetActive(false);
+            Debug.Log(j +"st angle is " + currentGun.Bullets[j]);
+            StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
+            audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
         }
     }
 
-    public IEnumerator Shoot()
+    private void HandleBeatUpdate(int updatedString)
     {
-        GameObject _bullet = Instantiate(bullet, transform);
+    }
 
-        _bullet.transform.position = transform.position;
+    private void LoadBullets(int magazineCap)
+    {
+        for (int i = 0; i < currentGun.Bullets.Length; i++)
+        {
+            magazine[i] = BulletPool.SharedInstance.GetPooledObject();
+        }
+    }
+
+    public IEnumerator Shoot(GameObject _bullet, float rotation, int shot)
+    {
+        if (_bullet != null)
+        {
+            Debug.Log("Current rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
+            _bullet.transform.position = transform.position;
+            _bullet.transform.rotation = player.rotation;
+            _bullet.transform.Rotate(0, rotation, 0);
+            Debug.Log("New rotation of array obj is " + magazine[shot].transform.rotation + " and of passed obj is " + _bullet.transform.rotation);
+            _bullet.SetActive(true);
+        }
 
         Rigidbody rb = _bullet.GetComponent<Rigidbody>();
 
+        rb.velocity = Vector3.zero;
+
         rb.AddForce(_bullet.transform.forward * bulletSpeed);
 
-        yield return new WaitForSeconds(bpmInterval);
+        _bullet.transform.parent = null;
 
-        Destroy(_bullet);
 
         yield return null;
-
 
     }
 }
