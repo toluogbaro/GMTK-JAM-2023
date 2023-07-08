@@ -34,30 +34,36 @@ public class SCR_Shoot : MonoBehaviour
 
     private void HandleMarkerUpdate(string updatedString)
     {
-        if (magazine.Count != currentGun.Bullets.Length)
+        try
         {
-            for (int i = 0; i < currentGun.Bullets.Length; i++)
+            if (magazine.Count != currentGun.Bullets.Length)
             {
-                GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
-                if (_bullet != null)
+                for (int i = 0; i < currentGun.Bullets.Length; i++)
                 {
-                    //_bullet.transform.position = transform.position;
-                    //_bullet.transform.rotation = player.rotation;
-                    //_bullet.transform.Rotate(0, currentGun.Bullets[i], 0);
-                    _bullet.SetActive(true);
+                    GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+                    if (_bullet != null)
+                    {
+                        //_bullet.transform.position = transform.position;
+                        //_bullet.transform.rotation = player.rotation;
+                        //_bullet.transform.Rotate(0, currentGun.Bullets[i], 0);
+                        _bullet.SetActive(true);
+                    }
+                    magazine.Add(_bullet);
+
+
                 }
-                magazine.Add(_bullet);
-
-
             }
-        }
 
-        for (int j = 0; j < magazine.Count; j++)
+            for (int j = 0; j < magazine.Count; j++)
+            {
+
+                magazine[j].SetActive(false);
+                StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
+                audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
+            }
+        } catch (System.Exception ex)
         {
-
-            magazine[j].SetActive(false);
-            StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
-            audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
+            print("No weapon. Waiting...");
         }
     }
 
