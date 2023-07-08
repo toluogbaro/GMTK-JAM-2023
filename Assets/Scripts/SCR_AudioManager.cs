@@ -2,7 +2,7 @@ using UnityEngine;
 
 class SCR_AudioManager : MonoBehaviour
 {
-    private FMOD.Studio.EventInstance instance;
+    public FMOD.Studio.EventInstance musicInstance;
     private SCR_BeatSystem bS;
 
     void Start()
@@ -14,30 +14,30 @@ class SCR_AudioManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(PlaybackState(instance) != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+            if(PlaybackState(musicInstance) != FMOD.Studio.PLAYBACK_STATE.PLAYING)
             {
-                instance = FMODUnity.RuntimeManager.CreateInstance("event:/music");
-                instance.start();
-                bS.AssignBeatEvent(instance);
+                musicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/music");
+                musicInstance.start();
+                bS.AssignBeatEvent(musicInstance);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            bS.StopAndClear(instance);
+            bS.StopAndClear(musicInstance);
         }
 
         //Debug.Log(SCR_BeatSystem.marker);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            instance.setParameterByName("Mode", 0);
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        // {
+        //     instance.setParameterByName("Mode", 0);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            instance.setParameterByName("Mode", 1);
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha2))
+        // {
+        //     instance.setParameterByName("Mode", 1);
+        // }
 
     }
 
