@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cc96ee77e868ec4a9805e078c527254, type: 3}
-  m_Name: Shotgun
+  m_Name: Akimbo Pistol
   m_EditorClassIdentifier: 
   FireRate: 0.25
   Bullets:
   - 0
-  - 30
-  - -30
+  - 180

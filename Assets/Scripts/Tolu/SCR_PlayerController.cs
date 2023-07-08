@@ -33,9 +33,18 @@ public class SCR_PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        move = transform.right * x + transform.forward * z;
+        //move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * movementSpeed * Time.deltaTime);
+        //controller.Move(move * movementSpeed * Time.deltaTime);
+
+        Vector3 movement = new Vector3(x, 0.0f, z);
+        if (x != 0f || z != 0f)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+        }
+
+
+        transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
     }
 
     //public IEnumerator MovePlayer(Vector3 dir)
