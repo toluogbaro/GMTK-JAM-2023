@@ -46,7 +46,7 @@ public class SCR_CameraFollow : MonoBehaviour
             if (characterBody)
             {
                 var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, Vector3.up);
-                characterBody.transform.localRotation = yRotation * targetCharacterOrientation;
+                //characterBody.transform.localRotation = yRotation * targetCharacterOrientation;
                 transform.LookAt(characterBody.transform);
             }
             else

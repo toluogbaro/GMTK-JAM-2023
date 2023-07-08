@@ -38,6 +38,7 @@ public class SCR_Shoot : MonoBehaviour
         {
             if (magazine.Count != currentGun.Bullets.Length)
             {
+                magazine = new List<GameObject>();
                 for (int i = 0; i < currentGun.Bullets.Length; i++)
                 {
                     GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
@@ -63,6 +64,7 @@ public class SCR_Shoot : MonoBehaviour
             }
         } catch (System.Exception ex)
         {
+            //print(ex);
             print("No weapon. Waiting...");
         }
     }

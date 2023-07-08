@@ -8,6 +8,6 @@ public class SCR_GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != this) Destroy(gameObject);
+       // if (_instance != this) Destroy(gameObject);
     }
 }

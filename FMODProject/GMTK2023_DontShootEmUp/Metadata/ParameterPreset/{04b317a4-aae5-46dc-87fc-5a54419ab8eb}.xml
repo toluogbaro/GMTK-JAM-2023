@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{04b317a4-aae5-46dc-87fc-5a54419ab8eb}">
+		<property name="name">
+			<value>Mode</value>
+		</property>
+		<relationship name="folder">
+			<destination>{66cb7f4c-0a0a-4826-87e0-653c9bc63f0e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8ce1adde-8417-40c4-bfc9-b81012114a6d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8ce1adde-8417-40c4-bfc9-b81012114a6d}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Shotgun</value>
+			<value>Pistol</value>
+			<value>SubMachine</value>
+			<value>Burst</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
