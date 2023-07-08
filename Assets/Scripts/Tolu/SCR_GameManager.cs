@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class SCR_GameManager : MonoBehaviour
 {
-    public static int globalBPM;
-    public static bool isActionReady;
+    public static SCR_GameManager _instance;
 
-
-    public static void CalculateInterval()
+    private void Awake()
     {
-        int bpmStep = globalBPM / 60;
+        if (_instance != this) Destroy(gameObject);
     }
 }
