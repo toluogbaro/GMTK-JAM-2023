@@ -13,14 +13,17 @@ public class SCR_Shoot : MonoBehaviour
     public float destroyTime;
     public float bulletSpeed;
 
+    int maxCycles = 10;
+    int currentCycle = 1;
     private void Update()
     {
         counter += Time.deltaTime;
 
-        if (counter >= bpmInterval)
+        if (currentCycle < maxCycles && counter >= bpmInterval)
         {
             StartCoroutine(Shoot());
             counter = 0f;
+            currentCycle++;
         }
     }
 
@@ -30,21 +33,19 @@ public class SCR_Shoot : MonoBehaviour
 
         foreach (float shot in currentGun.Bullets)
         {
-            GameObject _bullet = Instantiate(bullet, transform);
 
-            _bullet.transform.position = transform.position;
-
-            _bullet.transform.rotation = player.rotation;
-
-            //GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
-            //if (bullet != null)
-            //{
-            //    bullet.transform.position = transform.position;
-            //    bullet.transform.rotation = player.rotation;
-            //    bullet.SetActive(true);
-            //}
+            GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+            if (_bullet != null)
+            {
+                _bullet.transform.position = transform.position;
+                _bullet.transform.rotation = player.rotation;
+                _bullet.transform.Rotate(0, shot, 0);
+                _bullet.SetActive(true);
+            }
 
             Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+
+            rb.velocity = Vector3.zero;
 
             rb.AddForce(_bullet.transform.forward * bulletSpeed);
 
@@ -52,8 +53,7 @@ public class SCR_Shoot : MonoBehaviour
 
             yield return new WaitForSeconds(bpmInterval);
 
-            Destroy(_bullet);
-            //bullet.SetActive(false);
+            _bullet.SetActive(false);
         }
 
 
