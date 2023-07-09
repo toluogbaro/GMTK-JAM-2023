@@ -9,7 +9,12 @@ public class SCR_Pickup : MonoBehaviour
 
     private void Awake()
     {
-        shoot = FindObjectOfType<SCR_Shoot>();
+      
+    }
+
+    private void Start()
+    {
+        shoot = SCR_Shoot.SharedInstance;
     }
 
     //private void OnCollisionEnter(Collision collision)

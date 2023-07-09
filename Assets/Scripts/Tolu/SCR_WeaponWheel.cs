@@ -9,8 +9,14 @@ public class SCR_WeaponWheel : MonoBehaviour
     [SerializeField] List<GameObject> wheelCompartments;
     [SerializeField] GameObject currentWeapon;
 
-    private SCR_Shoot shootScript;
+    [SerializeField] private SCR_Shoot shootScript;
     private void Awake()
+    {
+        //shootScript = FindObjectOfType<SCR_Shoot>();
+       
+    }
+
+    private void Start()
     {
         shootScript = SCR_Shoot.SharedInstance;
     }

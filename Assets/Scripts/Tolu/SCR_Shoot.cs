@@ -7,24 +7,30 @@ public class SCR_Shoot : MonoBehaviour
 {
     public static SCR_Shoot SharedInstance;
     public GunConfiguration currentGun;
-    public Transform player;
+    public GameObject player;
     public float bpmInterval, counter;
     public float destroyTime;
     public float bulletSpeed;
 
     SCR_AudioManager audioManager;
+    //BulletPool bulletPool;
 
+    [SerializeField] Rigidbody rb;
     //private List<GameObject> magazine;
 
     private void Start()
     {
         //magazine = new List<GameObject>();
+        player = GameObject.FindGameObjectWithTag("Player");
         audioManager = FindObjectOfType<SCR_AudioManager>();
+       // bulletPool = FindObjectOfType<BulletPool>();
+        
     }
 
     void Awake()
     {
         SharedInstance = this;
+        
     }
 
     private void OnEnable()
@@ -113,11 +119,11 @@ public class SCR_Shoot : MonoBehaviour
         try
         {
 
-            for (int j = 0; j < currentGun.Bullets.Length; j++)
-            {
-                StartCoroutine(Shoot());
-                audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
-            }
+        
+             StartCoroutine(Shoot());
+
+             audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
+            
         }
         catch (System.Exception ex)
         {
@@ -139,18 +145,19 @@ public class SCR_Shoot : MonoBehaviour
             GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
             if (_bullet != null)
             {
-                _bullet.transform.position = player.position;
-                _bullet.transform.rotation = player.rotation;
+                _bullet.transform.position = player.transform.position;
+                _bullet.transform.rotation = player.transform.rotation;
                 _bullet.transform.Rotate(0, currentGun.Bullets[j], 0);
                 _bullet.SetActive(true);
             }
             magazine.Add(_bullet);
 
-            Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+            rb = _bullet.GetComponent<Rigidbody>();
 
             rb.velocity = Vector3.zero;
 
             rb.AddForce(_bullet.transform.forward * bulletSpeed);
+
         }
 
         StartCoroutine(Unshoot(magazine));
