@@ -7,7 +7,7 @@ public class SCR_Npc : MonoBehaviour
     [Header("NPC Sight")]
     [Range(1, 10)]
     public float detectionRange = 10f;
-
+    [Tooltip("health value")]
     [Header("NPC abilities")]
     [SerializeField]
     private int maxHealth = 10;
@@ -21,10 +21,12 @@ public class SCR_Npc : MonoBehaviour
     public GameObject emote;
 
     [Header("Speed")]
+    [Tooltip("set a speed setting")]
     [Range(1, 10)]
     public float speed = 5f;
 
     [Header("Transform Points")]
+    [Tooltip("Place transform points here to make them go to it")]
     public Transform[] pathPoints;
     private int currentPointIndex = 0;
 
@@ -38,6 +40,7 @@ public class SCR_Npc : MonoBehaviour
     private void Update()
     {
         DetectBullets();
+        MoveAlongPath();
 
         if (!fear)
         {
@@ -45,7 +48,6 @@ public class SCR_Npc : MonoBehaviour
         }
         else
         {
-        MoveAlongPath();
             emote.SetActive(true);
             animator.Play("FearJump");
             if (!fearJump)
