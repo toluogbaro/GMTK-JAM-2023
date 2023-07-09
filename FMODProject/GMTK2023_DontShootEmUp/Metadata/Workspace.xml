@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{6f45d524-8c94-4300-976d-4675f3239181}">
 		<property name="builtBanksOutputDirectory">
-			<value>../../../../Clones/GMTK-JAM-2023</value>
+			<value>../../</value>
 		</property>
 		<relationship name="masterEventFolder">
 			<destination>{6e8adcca-7c09-4505-9d4f-65598a55a739}</destination>
