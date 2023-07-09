@@ -10,7 +10,7 @@ public class SCR_WheelCompartment : MonoBehaviour
     public GunConfiguration gunConfiguration;
     public Image image;
     public List<Sprite> spriteList;
-    public SCR_Shoot shootScript;
+    //public SCR_Shoot shootScript;
 
     private void Awake()
     {

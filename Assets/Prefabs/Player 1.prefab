@@ -355,56 +355,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!1 &7933297042159063505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7933297042159063504}
-  - component: {fileID: 7933297042159063507}
-  m_Layer: 0
-  m_Name: bulletHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7933297042159063504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7933297042159063505}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.11761414, z: 0.05000019}
-  m_LocalScale: {x: 0.26638, y: 0.14919074, z: 0.26638}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7933297042286349792}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7933297042159063507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7933297042159063505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18c7a99be074da84f92839374e332bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentGun: {fileID: 11400000, guid: 982a3d283506f3e449328514613a8f94, type: 2}
-  player: {fileID: 7933297042286349792}
-  bpmInterval: 0.5
-  counter: 0
-  destroyTime: 2
-  bulletSpeed: 1000
 --- !u!1 &7933297042163304139
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +538,7 @@ GameObject:
   - component: {fileID: 7933297042286349789}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -605,7 +555,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1.7855, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7933297042159063504}
   - {fileID: 7933297042512271164}
   - {fileID: 7933297043340044254}
   m_Father: {fileID: 0}
@@ -687,6 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  gravityMultiplier: 3
 --- !u!143 &7933297042286349794
 CharacterController:
   m_ObjectHideFlags: 0
@@ -881,7 +831,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7933297042286349792}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7933297042512271161
 MeshFilter:
@@ -1356,7 +1306,7 @@ RectTransform:
   m_Children:
   - {fileID: 7933297041686180762}
   m_Father: {fileID: 7933297042286349792}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1476,7 +1426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734f53ef2b8974d4bbb07ff34fbda8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootScript: {fileID: 7933297042159063507}
   wheelPositions:
   - {x: 0, y: 0, z: 0}
   - {x: -150, y: -75, z: 0}

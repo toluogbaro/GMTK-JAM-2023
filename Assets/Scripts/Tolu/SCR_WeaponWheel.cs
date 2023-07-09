@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class SCR_WeaponWheel : MonoBehaviour
 {
-    [SerializeField] SCR_Shoot shootScript;
     [SerializeField] List<Vector3> wheelPositions;
     [SerializeField] List<GameObject> wheelCompartments;
     [SerializeField] GameObject currentWeapon;
+
+    [SerializeField] private SCR_Shoot shootScript;
     private void Awake()
     {
+        //shootScript = FindObjectOfType<SCR_Shoot>();
+       
+    }
 
+    private void Start()
+    {
+        shootScript = SCR_Shoot.SharedInstance;
     }
 
     private void Update()
@@ -54,7 +61,7 @@ public class SCR_WeaponWheel : MonoBehaviour
 
     void MoveCycle()
     {
-        if (currentWeapon.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == shootScript.currentGun.gunType) return;
+        if (!shootScript.currentGun || currentWeapon.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == shootScript.currentGun.gunType) return;
 
         switch (shootScript.currentGun.gunType)
         {

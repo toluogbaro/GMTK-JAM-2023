@@ -6,8 +6,12 @@ public class SCR_PlayerController : MonoBehaviour
 {
 
     CharacterController controller;
-    Vector3 move;
+    Vector3 movement;
     [SerializeField] float movementSpeed;
+    private float gravity = -9.81f;
+    [SerializeField] private float gravityMultiplier = 3f;
+    private float velocity;
+
     //[Header("TranslateSystem")]
 
     //[SerializeField] Vector3 origin, targetPos;
@@ -30,21 +34,16 @@ public class SCR_PlayerController : MonoBehaviour
     void CryptMovement()
     {
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
 
         ////move = transform.right * x + transform.forward * z;
 
         ////controller.Move(move * movementSpeed * Time.deltaTime);
 
-        Vector3 movement = new Vector3(x, 0.0f, z);
-        //if (x != 0f || z != 0f)
-        //{
-        //    //transform.rotation = Quaternion.LookRotation(movement);
-        //}
-
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
+
 
         if (Mathf.Abs(movement.x) > Mathf.Abs(movement.z))
         {
@@ -55,8 +54,15 @@ public class SCR_PlayerController : MonoBehaviour
             movement.x = 0;
         }
 
+        if (movement.x != 0f || movement.z != 0f)
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
+        }
 
-        transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+        movement.y += gravity * Time.deltaTime;
+        //transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+
+        controller.Move(movement * movementSpeed * Time.deltaTime);
     }
 
     //public IEnumerator MovePlayer(Vector3 dir)
