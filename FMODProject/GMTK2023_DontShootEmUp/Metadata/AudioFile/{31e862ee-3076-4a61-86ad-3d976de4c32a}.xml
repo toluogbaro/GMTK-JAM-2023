@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{31e862ee-3076-4a61-86ad-3d976de4c32a}">
+		<property name="assetPath">
+			<value>munch_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.084195011337868483</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{570e12d7-3e03-4025-a025-eaab8bb097ec}</destination>
+		</relationship>
+	</object>
+</objects>
