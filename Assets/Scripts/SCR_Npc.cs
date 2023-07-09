@@ -58,6 +58,18 @@ public class SCR_Npc : MonoBehaviour
         }
     }
 
+    private void GameEnd()
+    {
+        SCR_GameManager._instance.LevelLoader(0);
+    }
+
+    public IEnumerator GameEndSequence()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(1f);
+        GameEnd();
+    }
+
     private void MoveAlongPath()
     {
         if (pathPoints.Length == 0)
@@ -89,6 +101,7 @@ public class SCR_Npc : MonoBehaviour
             if (hit.CompareTag("Bullet"))
             {
                 fear = true;
+                StartCoroutine(GameEndSequence());
             }
         }
     }

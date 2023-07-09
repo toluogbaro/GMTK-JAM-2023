@@ -15,6 +15,7 @@ public class SCR_Reflect : MonoBehaviour
     [SerializeField] SCR_Reflective_Surface[] reflectiveWalls;
     [SerializeField] List<GameObject> shootableObjects;
     [SerializeField] float distanceThreshold;
+    [SerializeField] float minDistance;
     [SerializeField] Collider _collider;
 
     private void Awake()
@@ -54,6 +55,8 @@ public class SCR_Reflect : MonoBehaviour
         currentSpeed = lastVelo.magnitude;
         dir = Vector3.Reflect(lastVelo.normalized, collision.contacts[0].normal);
 
+        transform.localRotation = collision.gameObject.transform.localRotation;
+
         rb.velocity = dir * Mathf.Max(currentSpeed, 0);
 
         //reflects++;
@@ -62,10 +65,17 @@ public class SCR_Reflect : MonoBehaviour
 
     void DistanceToWallCheck()
     {
+
+        
         for(int i = 0; i < reflectiveWalls.Length; i++ )
         {
             float dist = Vector3.Distance(transform.position, reflectiveWalls[i].transform.position);
-            if(dist <= distanceThreshold)
+            if (dist <= minDistance)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            if (dist <= distanceThreshold)
             {
                 _collider.isTrigger = false;
             }
@@ -81,6 +91,12 @@ public class SCR_Reflect : MonoBehaviour
         for (int i = 0; i < shootableObjects.Count; i++)
         {
             float dist = Vector3.Distance(transform.position, shootableObjects[i].transform.position);
+            if (dist <= minDistance)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             if (dist <= distanceThreshold)
             {
                 _collider.isTrigger = false;

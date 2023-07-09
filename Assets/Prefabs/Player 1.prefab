@@ -1436,6 +1436,7 @@ MonoBehaviour:
   - {fileID: 610677728466952182}
   - {fileID: 610677728466952182}
   currentWeapon: {fileID: 610677729277098134}
+  shootScript: {fileID: 0}
 --- !u!1001 &7933297041856651930
 PrefabInstance:
   m_ObjectHideFlags: 0
