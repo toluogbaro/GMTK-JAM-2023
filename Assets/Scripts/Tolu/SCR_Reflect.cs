@@ -13,23 +13,31 @@ public class SCR_Reflect : MonoBehaviour
     //[SerializeField] private int maxReflects;
 
     [SerializeField] SCR_Reflective_Surface[] reflectiveWalls;
+    [SerializeField] List<GameObject> shootableObjects;
     [SerializeField] float distanceThreshold;
     [SerializeField] Collider _collider;
 
     private void Awake()
     {
         reflectiveWalls = FindObjectsOfType<SCR_Reflective_Surface>();
+
         _collider = GetComponent<Collider>();
     }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        var objects = GameObject.FindGameObjectsWithTag("Shootable Object");
+        foreach(var obj in objects)
+        {
+            shootableObjects.Add(obj);
+        }
     }
 
     private void Update()
     {
         DistanceToWallCheck();
+        DistanceToShootableObjectsCheck();
     }
 
     private void LateUpdate()
@@ -39,6 +47,7 @@ public class SCR_Reflect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Shootable Objects") Destroy(gameObject);
         if (collision.gameObject.layer != 7) return;
 
         currentSpeed = lastVelo.magnitude;
@@ -62,6 +71,18 @@ public class SCR_Reflect : MonoBehaviour
             else
             {
                 _collider.isTrigger = true;
+            }
+        }
+    }
+
+    void DistanceToShootableObjectsCheck()
+    {
+        for (int i = 0; i < shootableObjects.Count; i++)
+        {
+            float dist = Vector3.Distance(transform.position, shootableObjects[i].transform.position);
+            if (dist <= distanceThreshold)
+            {
+                _collider.isTrigger = false;
             }
         }
     }
