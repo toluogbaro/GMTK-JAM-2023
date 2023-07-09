@@ -6,7 +6,10 @@ public class LevelTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") ;
-        SCR_GameManager._instance.LevelLoader(2);
+        if (other.gameObject.tag == "Player")
+        {
+            SCR_GameManager._instance.LevelLoader(2);
+        }
+        
     }
 }

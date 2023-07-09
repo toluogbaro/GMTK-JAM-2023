@@ -43,7 +43,7 @@ public class SCR_Npc : MonoBehaviour
 
     private void Update()
     {
-        NpcBulletDetect();
+        //NpcBulletDetect();
         DetectBullets();
         MoveAlongPath();
 
@@ -139,15 +139,17 @@ public class SCR_Npc : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.gameObject.tag == ("bullet"))
-    //    {
-    //        FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
-    //        audioManager.bS.StopAndClear(audioManager.musicInstance);
-    //        StartCoroutine(GameEndSequence());
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == ("Bullet"))
+        {
+            Debug.Log("Game End");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
+            audioManager.bS.StopAndClear(audioManager.musicInstance);
+            //StartCoroutine(GameEndSequence());
+            SCR_GameManager._instance.LevelLoader(0);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3665200723403118807}
   - component: {fileID: 1529429377566272541}
   - component: {fileID: 455527893739725267}
+  - component: {fileID: 5275795834840989856}
   m_Layer: 0
   m_Name: PR_Arcadecabinet_3
   m_TagString: Shootable Object
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.014716766, y: 0.03186076, z: 0.011657405}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5275795834840989856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024959904626888136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a6aa8d76e89354093051418069e90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5093267187270392844}
   - component: {fileID: 5093267187270392845}
   - component: {fileID: 5093267187270392834}
-  - component: {fileID: 5093267187270392835}
+  - component: {fileID: 5617751822696757336}
   m_Layer: 0
   m_Name: npc
   m_TagString: NPC
@@ -147,7 +147,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &5093267187270392835
+--- !u!136 &5617751822696757336
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,10 +157,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.19
+  m_Radius: 0.43710643
   m_Height: 0.96
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.24710643}
 --- !u!1 &5093267188421480290
 GameObject:
   m_ObjectHideFlags: 0
