@@ -8,6 +8,10 @@ public class SCR_PlayerController : MonoBehaviour
     CharacterController controller;
     Vector3 movement;
     [SerializeField] float movementSpeed;
+    private float gravity = -9.81f;
+    [SerializeField] private float gravityMultiplier = 3f;
+    private float velocity;
+
     //[Header("TranslateSystem")]
 
     //[SerializeField] Vector3 origin, targetPos;
@@ -52,9 +56,10 @@ public class SCR_PlayerController : MonoBehaviour
 
         if (movement.x != 0f || movement.z != 0f)
         {
-            transform.rotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
         }
 
+        movement.y += gravity * Time.deltaTime;
         //transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
 
         controller.Move(movement * movementSpeed * Time.deltaTime);

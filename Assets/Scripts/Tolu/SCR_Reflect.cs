@@ -47,7 +47,8 @@ public class SCR_Reflect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Shootable Objects") Destroy(gameObject);
+        if (collision.gameObject.tag == "Shootable Object") gameObject.SetActive(false);
+
         if (collision.gameObject.layer != 7) return;
 
         currentSpeed = lastVelo.magnitude;
