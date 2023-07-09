@@ -12,6 +12,7 @@ public class SCR_MainMenu : MonoBehaviour
     private void Update()
     {
         Cursor.lockState = CursorLockMode.Confined;
+
     }
 
     void LoadScene()

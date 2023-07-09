@@ -28,6 +28,8 @@ public class SCR_GameManager : MonoBehaviour
         }
     }
 
+ 
+
     public void LevelLoader(int level)
     {
         SceneManager.LoadScene(level);

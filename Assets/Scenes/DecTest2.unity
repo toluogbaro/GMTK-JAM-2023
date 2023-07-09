@@ -21800,10 +21800,6 @@ PrefabInstance:
       value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
-      propertyPath: detectionRange
-      value: 3.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: pathPoints.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -36378,10 +36374,6 @@ PrefabInstance:
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: speed
       value: 2.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
-      propertyPath: detectionRange
-      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: pathPoints.Array.data[0]
@@ -58622,10 +58614,6 @@ PrefabInstance:
       value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
-      propertyPath: detectionRange
-      value: 3.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: pathPoints.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -68731,10 +68719,6 @@ PrefabInstance:
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: speed
       value: 2.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
-      propertyPath: detectionRange
-      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: pathPoints.Array.size
@@ -102471,10 +102455,6 @@ PrefabInstance:
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: speed
       value: 2.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
-      propertyPath: detectionRange
-      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 5093267187270392844, guid: 6e323317071c2504eb353b6f13e9f752, type: 3}
       propertyPath: pathPoints.Array.data[0]
