@@ -31,11 +31,14 @@ public class SCR_Npc : MonoBehaviour
     GameObject _bullet;
     int detections;
 
+    private SCR_AudioManager audioManager;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
+        audioManager = FindObjectOfType<SCR_AudioManager>();
     }
 
     private void Update()
@@ -130,6 +133,8 @@ public class SCR_Npc : MonoBehaviour
             detections++;
             Debug.Log("hasSensed");
             //end music here
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
+            audioManager.bS.StopAndClear(audioManager.musicInstance);
             StartCoroutine(GameEndSequence());
         }
 
