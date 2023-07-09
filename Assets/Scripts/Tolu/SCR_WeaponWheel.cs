@@ -11,7 +11,7 @@ public class SCR_WeaponWheel : MonoBehaviour
     [SerializeField] GameObject currentWeapon;
     private void Awake()
     {
-
+        shootScript = FindObjectOfType<SCR_Shoot>();
     }
 
     private void Update()
