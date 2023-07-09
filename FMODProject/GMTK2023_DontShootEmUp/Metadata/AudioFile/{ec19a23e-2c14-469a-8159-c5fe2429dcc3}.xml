@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ec19a23e-2c14-469a-8159-c5fe2429dcc3}">
+		<property name="assetPath">
+			<value>The Legend of Zelda Cartoon Sound Effects Triforce Piece Obtained.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>7.918004535147392</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{570e12d7-3e03-4025-a025-eaab8bb097ec}</destination>
+		</relationship>
+	</object>
+</objects>
