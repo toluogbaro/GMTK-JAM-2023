@@ -5,10 +5,10 @@ using UnityEngine;
 public class SCR_PlayerController : MonoBehaviour
 {
 
-    public Animator playerAnimator;
-    public GameObject playerMesh;
+    //public Animator playerAnimator;
+    //public GameObject playerMesh;
     CharacterController controller;
-    Vector3 movement;
+    public Vector3 movement;
     [SerializeField] float movementSpeed;
     private float gravity = -9.81f;
     [SerializeField] private float gravityMultiplier = 3f;
@@ -23,7 +23,7 @@ public class SCR_PlayerController : MonoBehaviour
     public void Start()
     {
         controller = GetComponent<CharacterController>();
-        playerAnimator = playerMesh.GetComponent<Animator>();
+        //playerAnimator = playerMesh.GetComponent<Animator>();
     }
 
     private void Update()
@@ -32,10 +32,10 @@ public class SCR_PlayerController : MonoBehaviour
 
     }
 
-    public void FootstepAudio()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFootstep");
-    }
+    // public void FootstepAudio()
+    // {
+    //     FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFootstep");
+    // }
 
     void CryptMovement()
     {
@@ -63,11 +63,11 @@ public class SCR_PlayerController : MonoBehaviour
         if (movement.x != 0f || movement.z != 0f)
         {
             transform.rotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
-            playerAnimator.SetBool("IsIdle", false);
+            //playerAnimator.SetBool("IsIdle", false);
         }
         else
         {
-            playerAnimator.SetBool("IsIdle", true);
+            //playerAnimator.SetBool("IsIdle", true);
         }
 
         movement.y += gravity * Time.deltaTime;
