@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
+using FMOD.Studio;
 
 public class SCR_GameManager : MonoBehaviour
 {
     public static SCR_GameManager _instance;
+    private EventInstance menuMusicInst;
 
     Scene scene;
 
@@ -13,6 +16,12 @@ public class SCR_GameManager : MonoBehaviour
     {
         _instance = this;
         scene = SceneManager.GetActiveScene();
+    }
+
+    void Start()
+    {
+        menuMusicInst = RuntimeManager.CreateInstance("event:/MenuMusic");
+        menuMusicInst.start();
     }
 
     private void Update()
@@ -28,10 +37,20 @@ public class SCR_GameManager : MonoBehaviour
         }
     }
 
- 
+    void OnDestroy()
+    {
+        StopMenuMusic();
+    }
 
     public void LevelLoader(int level)
     {
         SceneManager.LoadScene(level);
+        StopMenuMusic();
+    }
+
+    void StopMenuMusic()
+    {
+        menuMusicInst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        menuMusicInst.release();
     }
 }

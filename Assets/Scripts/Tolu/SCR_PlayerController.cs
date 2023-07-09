@@ -5,6 +5,8 @@ using UnityEngine;
 public class SCR_PlayerController : MonoBehaviour
 {
 
+    public Animator playerAnimator;
+    public GameObject playerMesh;
     CharacterController controller;
     Vector3 movement;
     [SerializeField] float movementSpeed;
@@ -21,6 +23,7 @@ public class SCR_PlayerController : MonoBehaviour
     public void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerAnimator = playerMesh.GetComponent<Animator>();
     }
 
     private void Update()
@@ -57,6 +60,11 @@ public class SCR_PlayerController : MonoBehaviour
         if (movement.x != 0f || movement.z != 0f)
         {
             transform.rotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
+            playerAnimator.SetBool("IsIdle", false);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsIdle", true);
         }
 
         movement.y += gravity * Time.deltaTime;
