@@ -27470,6 +27470,41 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0, z: 2}
   m_Center: {x: -1, y: 0.0001, z: 1}
+--- !u!1 &617896673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5438970169296602578, guid: f58b19eeedd251940979b3c715f0146c, type: 3}
+  m_PrefabInstance: {fileID: 733073630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &617896679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617896673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086766072
+      Data2: 1111425427
+      Data3: 1607529876
+      Data4: -437941465
+    Path: event:/Arcade Machine
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!43 &620675992
 Mesh:
   m_ObjectHideFlags: 0
@@ -45512,6 +45547,41 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &993656814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5972941695559030060, guid: ac723d62b1b6d8c41829a001d0f4854a, type: 3}
+  m_PrefabInstance: {fileID: 1598590103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &993656820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993656814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086766072
+      Data2: 1111425427
+      Data3: 1607529876
+      Data4: -437941465
+    Path: event:/Arcade Machine
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &993956078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1160583738979431684, guid: 048195b1146ca364298e02eb609b835b, type: 3}
@@ -70663,6 +70733,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1463556274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1623671465126537102, guid: 0b93966e0247a1649ab1567e8a2c5748, type: 3}
+  m_PrefabInstance: {fileID: 301046947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1463556280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463556274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086766072
+      Data2: 1111425427
+      Data3: 1607529876
+      Data4: -437941465
+    Path: event:/Arcade Machine
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!43 &1467241644
 Mesh:
   m_ObjectHideFlags: 0
@@ -107645,6 +107750,41 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1160583738979431687, guid: 048195b1146ca364298e02eb609b835b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 048195b1146ca364298e02eb609b835b, type: 3}
+--- !u!1 &2137756816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1024959904626888136, guid: 97b90726fd1c60445a1df3fdc34f73ae, type: 3}
+  m_PrefabInstance: {fileID: 1602652799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2137756822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137756816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086766072
+      Data2: 1111425427
+      Data3: 1607529876
+      Data4: -437941465
+    Path: event:/Arcade Machine
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2138251833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1160583738979431684, guid: 048195b1146ca364298e02eb609b835b, type: 3}
@@ -108085,6 +108225,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac723d62b1b6d8c41829a001d0f4854a, type: 3}
+--- !u!1 &2146542745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1623671465126537102, guid: 0b93966e0247a1649ab1567e8a2c5748, type: 3}
+  m_PrefabInstance: {fileID: 549895637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2146542751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146542745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2086766072
+      Data2: 1111425427
+      Data3: 1607529876
+      Data4: -437941465
+    Path: event:/Arcade Machine
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &6834003715013891
 PrefabInstance:
   m_ObjectHideFlags: 0
