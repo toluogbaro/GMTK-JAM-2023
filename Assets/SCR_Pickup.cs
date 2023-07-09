@@ -53,10 +53,7 @@ public class SCR_Pickup : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot("event:/ShotgunPickup");
                     return;
                 }
-                default:
-                {
-                    return;
-                }
+
 
             }
             gameObject.SetActive(false);

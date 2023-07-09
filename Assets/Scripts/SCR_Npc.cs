@@ -136,13 +136,21 @@ public class SCR_Npc : MonoBehaviour
             detections++;
             Debug.Log("hasSensed");
             //end music here
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
-            audioManager.bS.StopAndClear(audioManager.musicInstance);
-            StartCoroutine(GameEndSequence());
+           
         }
 
 
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.gameObject.tag == ("bullet"))
+    //    {
+    //        FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
+    //        audioManager.bS.StopAndClear(audioManager.musicInstance);
+    //        StartCoroutine(GameEndSequence());
+    //    }
+    //}
 
     private void OnDrawGizmosSelected()
     {
