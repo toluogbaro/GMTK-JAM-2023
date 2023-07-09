@@ -3,11 +3,11 @@ using UnityEngine;
 class SCR_AudioManager : MonoBehaviour
 {
     public FMOD.Studio.EventInstance musicInstance;
-    private SCR_BeatSystem bS;
+    public SCR_BeatSystem bS;
 
     void Start()
     {
-        bS = GetComponent<SCR_BeatSystem>();  
+        bS = GetComponent<SCR_BeatSystem>();
 
         if(PlaybackState(musicInstance) != FMOD.Studio.PLAYBACK_STATE.PLAYING)
             {
