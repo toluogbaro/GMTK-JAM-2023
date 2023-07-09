@@ -55,7 +55,7 @@ public class SCR_WeaponWheel : MonoBehaviour
 
     void MoveCycle()
     {
-        if (currentWeapon.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == shootScript.currentGun.gunType) return;
+        if (!shootScript.currentGun || currentWeapon.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == shootScript.currentGun.gunType) return;
 
         switch (shootScript.currentGun.gunType)
         {

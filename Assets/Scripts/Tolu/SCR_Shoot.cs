@@ -14,11 +14,11 @@ public class SCR_Shoot : MonoBehaviour
 
     SCR_AudioManager audioManager;
 
-    private List<GameObject> magazine;
+    //private List<GameObject> magazine;
 
     private void Start()
     {
-        magazine = new List<GameObject>();
+        //magazine = new List<GameObject>();
         audioManager = FindObjectOfType<SCR_AudioManager>();
     }
 
@@ -38,37 +38,88 @@ public class SCR_Shoot : MonoBehaviour
         SCR_BeatSystem.OnBeatUpdate -= HandleBeatUpdate;
     }
 
+    //private void HandleMarkerUpdate(string updatedString)
+    //{
+    //    try
+    //    {
+    //        if (magazine.Count != currentGun.Bullets.Length)
+    //        {
+    //            magazine = new List<GameObject>();
+    //            for (int i = 0; i < currentGun.Bullets.Length; i++)
+    //            {
+    //                GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+    //                if (_bullet != null)
+    //                {
+    //                    //_bullet.transform.position = transform.position;
+    //                    //_bullet.transform.rotation = player.rotation;
+    //                    //_bullet.transform.Rotate(0, currentGun.Bullets[i], 0);
+    //                    _bullet.SetActive(true);
+    //                }
+    //                magazine.Add(_bullet);
+
+
+    //            }
+    //        }
+
+    //        for (int j = 0; j < magazine.Count; j++)
+    //        {
+
+    //            //magazine[j].SetActive(false);
+    //            StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
+    //            audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
+    //        }
+    //    } catch (System.Exception ex)
+    //    {
+    //        //print(ex);
+    //        print("No weapon. Waiting...");
+    //    }
+    //}
+
+    //private void HandleBeatUpdate(int updatedString)
+    //{
+    //}
+
+    //private void LoadBullets(int magazineCap)
+    //{
+    //    for (int i = 0; i < currentGun.Bullets.Length; i++)
+    //    {
+    //        magazine[i] = BulletPool.SharedInstance.GetPooledObject();
+    //    }
+    //}
+
+    //public IEnumerator Shoot(GameObject _bullet, float rotation, int shot)
+    //{
+    //    if (!_bullet.activeSelf)
+    //    {
+    //        _bullet.transform.position = player.position;
+    //        _bullet.transform.rotation = player.rotation;
+    //        _bullet.transform.Rotate(0, rotation, 0);
+    //        _bullet.SetActive(true);
+    //    }
+
+    //    Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+
+    //    rb.velocity = Vector3.zero;
+
+    //    rb.AddForce(_bullet.transform.forward * bulletSpeed);
+
+    //    StartCoroutine(Unshoot(_bullet));
+
+    //    yield return null;
+
+    //}
     private void HandleMarkerUpdate(string updatedString)
     {
         try
         {
-            if (magazine.Count != currentGun.Bullets.Length)
+
+            for (int j = 0; j < currentGun.Bullets.Length; j++)
             {
-                magazine = new List<GameObject>();
-                for (int i = 0; i < currentGun.Bullets.Length; i++)
-                {
-                    GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
-                    if (_bullet != null)
-                    {
-                        //_bullet.transform.position = transform.position;
-                        //_bullet.transform.rotation = player.rotation;
-                        //_bullet.transform.Rotate(0, currentGun.Bullets[i], 0);
-                        _bullet.SetActive(true);
-                    }
-                    magazine.Add(_bullet);
-
-
-                }
-            }
-
-            for (int j = 0; j < magazine.Count; j++)
-            {
-
-                magazine[j].SetActive(false);
-                StartCoroutine(Shoot(magazine[j], currentGun.Bullets[j], j));
+                StartCoroutine(Shoot());
                 audioManager.musicInstance.setParameterByNameWithLabel("Mode", currentGun.audioParam);
             }
-        } catch (System.Exception ex)
+        }
+        catch (System.Exception ex)
         {
             //print(ex);
             print("No weapon. Waiting...");
@@ -79,33 +130,42 @@ public class SCR_Shoot : MonoBehaviour
     {
     }
 
-    private void LoadBullets(int magazineCap)
+    public IEnumerator Shoot()
     {
-        for (int i = 0; i < currentGun.Bullets.Length; i++)
+        List<GameObject> magazine = new List<GameObject>();
+
+        for(int j = 0; j < currentGun.Bullets.Length; j++)
         {
-            magazine[i] = BulletPool.SharedInstance.GetPooledObject();
+            GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+            if (_bullet != null)
+            {
+                _bullet.transform.position = player.position;
+                _bullet.transform.rotation = player.rotation;
+                _bullet.transform.Rotate(0, currentGun.Bullets[j], 0);
+                _bullet.SetActive(true);
+            }
+            magazine.Add(_bullet);
+
+            Rigidbody rb = _bullet.GetComponent<Rigidbody>();
+
+            rb.velocity = Vector3.zero;
+
+            rb.AddForce(_bullet.transform.forward * bulletSpeed);
         }
-    }
 
-    public IEnumerator Shoot(GameObject _bullet, float rotation, int shot)
-    {
-        if (!_bullet.activeSelf)
-        {
-            _bullet.transform.position = player.position;
-            _bullet.transform.rotation = player.rotation;
-            _bullet.transform.Rotate(0, rotation, 0);
-            _bullet.SetActive(true);
-        }
-
-        Rigidbody rb = _bullet.GetComponent<Rigidbody>();
-
-        rb.velocity = Vector3.zero;
-
-        rb.AddForce(_bullet.transform.forward * bulletSpeed);
-
-        //_bullet.transform.parent = null;
+        StartCoroutine(Unshoot(magazine));
 
         yield return null;
 
+    }
+
+    private IEnumerator Unshoot(List<GameObject> magazine)
+    {
+        yield return new WaitForSeconds(destroyTime);
+
+        foreach (GameObject bullet in magazine)
+        {
+            bullet.SetActive(false);
+        }
     }
 }
