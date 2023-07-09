@@ -38,6 +38,7 @@ public class SCR_Npc : MonoBehaviour
     private void Update()
     {
         DetectBullets();
+        MoveAlongPath();
 
         if (!fear)
         {
@@ -45,7 +46,6 @@ public class SCR_Npc : MonoBehaviour
         }
         else
         {
-        MoveAlongPath();
             emote.SetActive(true);
             animator.Play("FearJump");
             if (!fearJump)
