@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SCR_Shoot : MonoBehaviour
 {
+    public static SCR_Shoot SharedInstance;
     public GunConfiguration currentGun;
     public Transform player;
     public float bpmInterval, counter;
@@ -19,6 +20,11 @@ public class SCR_Shoot : MonoBehaviour
     {
         magazine = new List<GameObject>();
         audioManager = FindObjectOfType<SCR_AudioManager>();
+    }
+
+    void Awake()
+    {
+        SharedInstance = this;
     }
 
     private void OnEnable()
@@ -85,7 +91,7 @@ public class SCR_Shoot : MonoBehaviour
     {
         if (!_bullet.activeSelf)
         {
-            _bullet.transform.position = transform.position;
+            _bullet.transform.position = player.position;
             _bullet.transform.rotation = player.rotation;
             _bullet.transform.Rotate(0, rotation, 0);
             _bullet.SetActive(true);
@@ -97,7 +103,7 @@ public class SCR_Shoot : MonoBehaviour
 
         rb.AddForce(_bullet.transform.forward * bulletSpeed);
 
-        _bullet.transform.parent = null;
+        //_bullet.transform.parent = null;
 
         yield return null;
 
