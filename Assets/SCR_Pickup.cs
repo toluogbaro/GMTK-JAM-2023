@@ -39,22 +39,20 @@ public class SCR_Pickup : MonoBehaviour
                 case GunType.AKIMBO:
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/BurstPickup");
-                    return;
+                    break;
                 }
 
                 case GunType.PISTOL:
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/PistolPickup");
-                    return;
+                    break;
                 }
 
                 case GunType.SHOTGUN:
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/ShotgunPickup");
-                    return;
+                    break;
                 }
-
-
             }
             gameObject.SetActive(false);
         }
