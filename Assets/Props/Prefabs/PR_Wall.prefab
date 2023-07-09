@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1160583738979431686}
   - component: {fileID: 5669740419632552953}
   - component: {fileID: 6793655924860994547}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PR_Wall
-  m_TagString: Untagged
+  m_TagString: Shootable Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
