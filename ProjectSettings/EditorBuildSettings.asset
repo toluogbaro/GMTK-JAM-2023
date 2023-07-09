@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DecTest2.unity
     guid: e53e7a308eea4e346badad26c24f64ac
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 2ae591d512fc1534abb44fb46b28aabf
   - enabled: 0
     path: Assets/Scenes/ToluTest.unity
     guid: 727fd2c80c9b64e4f921ffdf33375b72

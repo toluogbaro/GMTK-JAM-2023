@@ -33,11 +33,14 @@ public class SCR_GameManager : MonoBehaviour
         if(scene.buildIndex == 0)
         {
             Cursor.visible = true;
+
         }
         else
         {
             Cursor.visible = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) LevelLoader(0);
     }
 
     void OnDestroy()
@@ -55,5 +58,10 @@ public class SCR_GameManager : MonoBehaviour
     {
         menuMusicInst.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         menuMusicInst.release();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

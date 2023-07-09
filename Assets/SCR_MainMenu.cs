@@ -25,8 +25,5 @@ public class SCR_MainMenu : MonoBehaviour
 
     }
 
-    void QuitGame()
-    {
-        Application.Quit();
-    }
+  
 }

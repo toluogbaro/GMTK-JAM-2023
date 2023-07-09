@@ -61116,6 +61116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26f1ce1614a94c4da881132f1fba23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bS: {fileID: 0}
 --- !u!114 &1288718196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78947,6 +78948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597154368}
   - component: {fileID: 1597154367}
+  - component: {fileID: 1597154369}
   m_Layer: 0
   m_Name: Level Trigger
   m_TagString: Untagged
@@ -78962,7 +78964,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597154366}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -78982,6 +78984,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 159
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1597154369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597154366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ed444641b2a924db7d41b59586761f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1598539155
 PrefabInstance:
   m_ObjectHideFlags: 0
