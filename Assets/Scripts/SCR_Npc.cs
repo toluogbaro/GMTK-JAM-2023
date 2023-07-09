@@ -19,6 +19,7 @@ public class SCR_Npc : MonoBehaviour
     private Rigidbody rb;
     [Header("Emote")]
     public GameObject emote;
+    public GameObject jim;
 
     [Header("Speed")]
     [Tooltip("set a speed setting")]
@@ -49,7 +50,6 @@ public class SCR_Npc : MonoBehaviour
         else
         {
             emote.SetActive(true);
-            animator.Play("FearJump");
             if (!fearJump)
             {
             rb.AddForce(Vector3.up * 100f);
@@ -80,6 +80,9 @@ public class SCR_Npc : MonoBehaviour
 
         Transform currentPoint = pathPoints[currentPointIndex];
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+
+        animator.SetBool("IsIdle", false);
+
 
         if (transform.position == currentPoint.position)
         {
