@@ -19,6 +19,8 @@ public class SCR_CameraFollow : MonoBehaviour
     private Vector2 targetDirection;
     [SerializeField]
     private Vector2 targetCharacterDirection;
+    [SerializeField]
+    private Vector3 cameraOffset;
 
     public static Camera playerCam;
 
@@ -41,6 +43,7 @@ public class SCR_CameraFollow : MonoBehaviour
                 _mouseAbsolute.y = Mathf.Clamp(_mouseAbsolute.y, -clampInDegrees.y * 0.5f, clampInDegrees.y * 0.5f);
 
             transform.localRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
+            transform.localPosition = characterBody.transform.localPosition + cameraOffset;
 
             // If there's a character body that acts as a parent to the camera
             if (characterBody)

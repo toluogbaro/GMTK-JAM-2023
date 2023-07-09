@@ -16,3 +16,4 @@ MonoBehaviour:
   Bullets:
   - 0
   audioParam: Pistol
+  gunType: 1

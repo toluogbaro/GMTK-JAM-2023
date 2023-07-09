@@ -18,3 +18,4 @@ MonoBehaviour:
   - 30
   - -30
   audioParam: Shotgun
+  gunType: 2
