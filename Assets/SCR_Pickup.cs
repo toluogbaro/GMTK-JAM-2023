@@ -33,6 +33,32 @@ public class SCR_Pickup : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             shoot.currentGun = _gunType;
+            //play sound for weapon pickup
+            switch(_gunType.gunType)
+            {
+                case GunType.AKIMBO:
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/BurstPickup");
+                    return;
+                }
+
+                case GunType.PISTOL:
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/PistolPickup");
+                    return;
+                }
+
+                case GunType.SHOTGUN:
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/ShotgunPickup");
+                    return;
+                }
+                default:
+                {
+                    return;
+                }
+
+            }
             gameObject.SetActive(false);
         }
     }

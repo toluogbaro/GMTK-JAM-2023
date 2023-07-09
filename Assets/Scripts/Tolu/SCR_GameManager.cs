@@ -20,8 +20,11 @@ public class SCR_GameManager : MonoBehaviour
 
     void Start()
     {
-        menuMusicInst = RuntimeManager.CreateInstance("event:/MenuMusic");
-        menuMusicInst.start();
+        if(scene.buildIndex == 0)
+        {
+            menuMusicInst = RuntimeManager.CreateInstance("event:/MenuMusic");
+            menuMusicInst.start();
+        }
     }
 
     private void Update()

@@ -32,7 +32,10 @@ public class SCR_PlayerController : MonoBehaviour
 
     }
 
-
+    public void FootstepAudio()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFootstep");
+    }
 
     void CryptMovement()
     {

@@ -5,8 +5,7 @@ using UnityEngine;
 public class SCR_Npc : MonoBehaviour
 {
     [Header("NPC Sight")]
-    [Range(1, 10)]
-    public float detectionRange = 10f;
+    [SerializeField] public float detectionRange = 10f;
     [Tooltip("health value")]
     [Header("NPC abilities")]
     [SerializeField]
@@ -30,16 +29,22 @@ public class SCR_Npc : MonoBehaviour
     [Tooltip("Place transform points here to make them go to it")]
     public Transform[] pathPoints;
     private int currentPointIndex = 0;
+    GameObject _bullet;
+    int detections;
+
+    private SCR_AudioManager audioManager;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
+        audioManager = FindObjectOfType<SCR_AudioManager>();
     }
 
     private void Update()
     {
+        NpcBulletDetect();
         DetectBullets();
         MoveAlongPath();
 
@@ -58,17 +63,7 @@ public class SCR_Npc : MonoBehaviour
         }
     }
 
-    private void GameEnd()
-    {
-        SCR_GameManager._instance.LevelLoader(0);
-    }
-
-    public IEnumerator GameEndSequence()
-    {
-        Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(1f);
-        GameEnd();
-    }
+   
 
     private void MoveAlongPath()
     {
@@ -104,9 +99,49 @@ public class SCR_Npc : MonoBehaviour
             if (hit.CompareTag("Bullet"))
             {
                 fear = true;
-                StartCoroutine(GameEndSequence());
             }
         }
+    }
+
+    private void GameEnd()
+    {
+        SCR_GameManager._instance.LevelLoader(0);
+    }
+
+    public IEnumerator GameEndSequence()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(0.1f);
+        GameEnd();
+    }
+
+    void NpcBulletDetect()
+    {
+        //Cat.SetDestination(Fish.position);
+
+        GameObject _bullet = BulletPool.SharedInstance.GetPooledObject();
+
+        bool npcBeenHit;
+
+        if (detections >= 1) return;
+
+        Vector3 npcToBullet = _bullet.transform.position - transform.position;
+        float distbetweenBulletAndNpc = Mathf.Sqrt(npcToBullet.sqrMagnitude);
+        npcBeenHit = distbetweenBulletAndNpc <= detectionRange ? true : false;
+
+
+        if (npcBeenHit)
+    
+        {
+            detections++;
+            Debug.Log("hasSensed");
+            //end music here
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Enemy Death");
+            audioManager.bS.StopAndClear(audioManager.musicInstance);
+            StartCoroutine(GameEndSequence());
+        }
+
+
     }
 
     private void OnDrawGizmosSelected()
