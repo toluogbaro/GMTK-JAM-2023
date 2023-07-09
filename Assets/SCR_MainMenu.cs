@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class SCR_MainMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
+    private void Update()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 
     void LoadScene()
     {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6c1f6420-77f8-43bd-bb68-2d63afc428d2}">
+		<property name="assetPath">
+			<value>9BH.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.9778231292517008</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{570e12d7-3e03-4025-a025-eaab8bb097ec}</destination>
+		</relationship>
+	</object>
+</objects>
