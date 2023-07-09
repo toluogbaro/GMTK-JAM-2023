@@ -20,7 +20,7 @@ public class BulletPool : MonoBehaviour
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool, transform);
+            tmp = Instantiate(objectToPool, SCR_Shoot.SharedInstance.transform);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
