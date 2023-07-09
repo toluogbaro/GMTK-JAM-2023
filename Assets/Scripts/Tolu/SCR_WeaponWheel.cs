@@ -63,15 +63,12 @@ public class SCR_WeaponWheel : MonoBehaviour
                 {
                     if(obj.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == GunType.PISTOL)
                     {
-                        if (obj.GetComponent<SCR_WheelCompartment>().gunConfiguration.gunType == GunType.AKIMBO)
-                        {
-                            currentWeapon = obj;
-                        }
+                        currentWeapon = obj;
                     }
                 }
                 if (wheelCompartments[0] != currentWeapon)
                 {
-                    int indexToSwap = wheelCompartments.IndexOf(currentWeapon);
+                  int indexToSwap = wheelCompartments.IndexOf(currentWeapon);
                     wheelCompartments[3] = wheelCompartments[0];
                     wheelCompartments[0] = wheelCompartments[indexToSwap];
                     wheelCompartments[indexToSwap] = wheelCompartments[3];
